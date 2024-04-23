@@ -57,6 +57,8 @@ public class Registration extends AppCompatActivity {
         {
             User newUser = new User(id, name, familia, otchestvo, mail, login, password);
             mDataBase.push().setValue(newUser);
+            startActivity(new Intent(this, MainScreen.class));
+            Toast.makeText(this,"Вы успешно прошли регистрацию",Toast.LENGTH_SHORT).show();
         }
         else
         {

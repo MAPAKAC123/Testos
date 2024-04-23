@@ -226,19 +226,6 @@
         app:layout_constraintStart_toEndOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="193dp"
-        android:layout_height="48dp"
-        android:background="@android:color/transparent"
-        android:onClick="onClickAcc"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.032"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView7" />
-
     <EditText
         android:id="@+id/edLogin"
         android:layout_width="194dp"
@@ -329,6 +316,19 @@
         app:layout_constraintEnd_toEndOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="@+id/imageButton2"
         app:layout_constraintTop_toTopOf="@+id/imageButton2" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="193dp"
+        android:layout_height="48dp"
+        android:background="@android:color/transparent"
+        android:onClick="onClickAcc"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.032"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
 
     <ImageButton
         android:id="@+id/imageButton"

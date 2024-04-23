@@ -41,6 +41,9 @@ public class LoginAccount extends AppCompatActivity {
     public void onClickBack(View view) {
         startActivity(new Intent(this, HomeScreen.class));
     }
+    public void onClickRecovery(View view) {
+        startActivity(new Intent(this, PasswordRecovery.class));
+    }
 
     public void onClickLogin(View view)
     {
@@ -57,7 +60,7 @@ public class LoginAccount extends AppCompatActivity {
                         User user = userSnapshot.getValue(User.class);
                         if (user.getPassword().equals(password)) {
                             // Логин и пароль совпадают, переходи на экран HomeScreen
-                            startActivity(new Intent(LoginAccount.this, HomeScreen.class));
+                            startActivity(new Intent(LoginAccount.this, MainScreen.class));
                         } else {
                             // Неправильный пароль
                             Toast.makeText(LoginAccount.this, "Неправильный пароль", Toast.LENGTH_SHORT).show();

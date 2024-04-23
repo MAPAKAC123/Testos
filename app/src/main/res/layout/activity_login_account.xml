@@ -134,6 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:background="@android:color/transparent"
+        android:onClick="onClickRecovery"
         android:text="Забыли пароль?"
         android:textColor="#938787"
         android:textSize="12sp"
