@@ -1,14 +1,7 @@
 package com.example.test;
 
 public class User {
-    private String id;
-    private String name;
-    private String familia;
-    private String otchestvo;
-    private String mail;
-    private String login;
-    private String password;
-
+    private String id, name, familia, otchestvo, mail, login, password;
     public User() {
         // Пустой конструктор по умолчанию, необходимый для Firebase
     }
