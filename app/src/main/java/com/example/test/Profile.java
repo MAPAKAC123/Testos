@@ -10,8 +10,10 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -62,17 +64,32 @@ public class Profile extends AppCompatActivity {
                     // Изображение успешно загружено на Firebase Storage
                     imagesRef.getDownloadUrl().addOnSuccessListener(uri -> {
                         String imageUrl = uri.toString();
+                        Toast.makeText(Profile.this, imageUrl, Toast.LENGTH_SHORT).show();
                         saveImageUrlToDatabase(imageUrl);
                     });
                 })
                 .addOnFailureListener(e -> {
                     // Обработка ошибок при загрузке изображения
                 });
+        
     }
 
     private void saveImageUrlToDatabase(String imageUrl) {
-        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("users");
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        databaseRef.child(userId).child("avatarUrl").setValue(imageUrl);
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            String userId = firebaseUser.getUid();
+            Toast.makeText(Profile.this, userId, Toast.LENGTH_SHORT).show();
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("User").child(userId);
+            userRef.child("avatarUrl").setValue(imageUrl)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(Profile.this, "Image URL saved to database", Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(Profile.this, "Failed to save image URL to database", Toast.LENGTH_SHORT).show();
+                    });
+        } else {
+            // Обработайте случай, когда FirebaseUser равен null
+            Toast.makeText(Profile.this, "Пользователь не найден для сохранения фото профиля", Toast.LENGTH_SHORT).show();
+        }
     }
 }
