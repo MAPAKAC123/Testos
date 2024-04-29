@@ -32,7 +32,6 @@ public class MainScreen extends AppCompatActivity {
 
         // Создаём начальный список автомобилей, который будет отображаться до загрузки данных из Firebase
         List<Car> carsList = new ArrayList<>();
-        //carsList.add(new Car("1", "Sedan", "AWD", "Automatic", "2022", "$25000", "Brand", "Model", "1"));
         // Добавьте другие автомобили по аналогии
 
         // Создаём адаптер и устанавливаем его для GridView
