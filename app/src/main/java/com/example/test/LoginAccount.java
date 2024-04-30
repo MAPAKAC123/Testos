@@ -21,6 +21,7 @@ public class LoginAccount extends AppCompatActivity {
     private EditText editTextText, editTextTextPassword3;
     private DatabaseReference mDataBase;
     private String USER_KEY = "User";
+    public String avatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,8 @@ public class LoginAccount extends AppCompatActivity {
         String password = editTextTextPassword3.getText().toString();
         mDataBase = FirebaseDatabase.getInstance().getReference("User");
         Query query = mDataBase.orderByChild("login").equalTo(login);
+        Query query1 = mDataBase.orderByChild("avatarUrl");
+        Toast.makeText(LoginAccount.this,query1, T)
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

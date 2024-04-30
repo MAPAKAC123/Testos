@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -26,11 +27,16 @@ public class Profile extends AppCompatActivity {
     private Uri selectedImageUri;
     private ImageView avatarImageView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         avatarImageView = findViewById(R.id.imageButton4);
+
+        String url = "https://firebasestorage.googleapis.com/v0/b/test12-a1831.appspot.com/o/images%2F1.3.png?alt=media&token=ab33e9f1-9e0f-4e88-8c0c-95dc391f1404";
+
+        Glide.with(getApplicationContext()).load(url).into(avatarImageView);
     }
     public void onClickiMain(View view) {
         startActivity(new Intent(this, MainScreen.class));
