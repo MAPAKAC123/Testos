@@ -59,8 +59,13 @@ public class LoginAccount extends AppCompatActivity {
                     for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                         User user = userSnapshot.getValue(User.class);
                         if (user.getPassword().equals(password)) {
-                            // Логин и пароль совпадают, переходи на экран HomeScreen
-                            startActivity(new Intent(LoginAccount.this, MainScreen.class));
+                            Intent intent = new Intent(LoginAccount.this, Profile.class);
+                            intent.putExtra("userName", user.getName());
+                            intent.putExtra("userFamilia", user.getFamilia());
+                            intent.putExtra("userOtchestvo", user.getOtchestvo());
+                            intent.putExtra("userMail", user.getMail());
+                            intent.putExtra("userUrl", user.getAvatarUrl());
+                            startActivity(intent);
                         } else {
                             // Неправильный пароль
                             Toast.makeText(LoginAccount.this, "Неправильный пароль", Toast.LENGTH_SHORT).show();

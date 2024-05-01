@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -26,18 +27,59 @@ public class Profile extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST_CODE = 1;
     private Uri selectedImageUri;
     private ImageView avatarImageView;
-
+    private String userName, userFamilia, userOtchestvo, userMail, userUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
         avatarImageView = findViewById(R.id.imageButton4);
 
-        String url = "https://firebasestorage.googleapis.com/v0/b/test12-a1831.appspot.com/o/images%2F1.3.png?alt=media&token=ab33e9f1-9e0f-4e88-8c0c-95dc391f1404";
+        // Восстановление значений из сохраненного состояния
+        if (savedInstanceState != null) {
+            userName = savedInstanceState.getString("userName");
+            userFamilia = savedInstanceState.getString("userFamilia");
+            userOtchestvo = savedInstanceState.getString("userOtchestvo");
+            userMail = savedInstanceState.getString("userMail");
+            userUrl = savedInstanceState.getString("userUrl");
+        } else {
+            // Получение данных из Intent (если активность создается впервые)
+            Intent intent = getIntent();
+            userName = intent.getStringExtra("userName");
+            userFamilia = intent.getStringExtra("userFamilia");
+            userOtchestvo = intent.getStringExtra("userOtchestvo");
+            userMail = intent.getStringExtra("userMail");
+            userUrl = intent.getStringExtra("userUrl");
+        }
 
-        Glide.with(getApplicationContext()).load(url).into(avatarImageView);
+        // Обновление пользовательского интерфейса с восстановленными/полученными значениями
+        TextView nameText = findViewById(R.id.nameText);
+        TextView familiaText = findViewById(R.id.familiaText);
+        TextView otchestvoText = findViewById(R.id.otchestvoText);
+        TextView mailUser = findViewById(R.id.mailText);
+
+        nameText.setText("Имя: " + userName);
+        familiaText.setText("Фамилия: " + userFamilia);
+        otchestvoText.setText("Отчество: " + userOtchestvo);
+        mailUser.setText("Почта: " + userMail);
+
+        Glide.with(getApplicationContext()).load(userUrl).into(avatarImageView);
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("userName", userName);
+        outState.putString("userFamilia", userFamilia);
+        outState.putString("userOtchestvo", userOtchestvo);
+        outState.putString("userMail", userMail);
+        outState.putString("userUrl", userUrl);
+    }
+
+
+
+
     public void onClickiMain(View view) {
         startActivity(new Intent(this, MainScreen.class));
     }

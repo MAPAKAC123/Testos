@@ -46,8 +46,8 @@
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="257dp"
-        android:layout_height="442dp"
+        android:layout_width="280dp"
+        android:layout_height="480dp"
         android:layout_marginTop="88dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
@@ -59,9 +59,9 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="197dp"
         android:layout_height="265dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="104dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -86,7 +86,7 @@
 
     <TextView
         android:id="@+id/carStampTextView"
-        android:layout_width="172dp"
+        android:layout_width="250dp"
         android:layout_height="55dp"
         android:gravity="right|center_horizontal"
         android:padding="16dp"
@@ -95,14 +95,14 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.916"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.158" />
+        app:layout_constraintVertical_bias="0.156" />
 
     <TextView
         android:id="@+id/carDriveTextView"
-        android:layout_width="172dp"
+        android:layout_width="250dp"
         android:layout_height="55dp"
         android:gravity="right|center_horizontal"
         android:padding="16dp"
@@ -111,14 +111,14 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.403" />
 
     <TextView
         android:id="@+id/carPriceTextView"
-        android:layout_width="169dp"
+        android:layout_width="250dp"
         android:layout_height="55dp"
         android:gravity="right|center_horizontal"
         android:padding="16dp"
@@ -127,14 +127,14 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.913"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.322" />
 
     <TextView
         android:id="@+id/carYearTextView"
-        android:layout_width="174dp"
+        android:layout_width="250dp"
         android:layout_height="55dp"
         android:gravity="right|center_horizontal"
         android:padding="16dp"
@@ -143,15 +143,15 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.485" />
 
     <TextView
         android:id="@+id/carBodyTextView"
-        android:layout_width="195dp"
-        android:layout_height="52dp"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
         android:gravity="right|center_horizontal"
         android:padding="16dp"
         android:text="Body"
@@ -159,15 +159,15 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.566" />
 
     <TextView
         android:id="@+id/carTransmissionTextView"
-        android:layout_width="195dp"
-        android:layout_height="52dp"
+        android:layout_width="250dp"
+        android:layout_height="90dp"
         android:gravity="right|center_horizontal"
         android:padding="16dp"
         android:text="Transmission"
@@ -175,14 +175,14 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.642" />
+        app:layout_constraintVertical_bias="0.683" />
 
     <TextView
         android:id="@+id/carNameTextView"
-        android:layout_width="171dp"
+        android:layout_width="250dp"
         android:layout_height="55dp"
         android:gravity="right|center_horizontal"
         android:padding="16dp"
@@ -191,7 +191,7 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.241" />

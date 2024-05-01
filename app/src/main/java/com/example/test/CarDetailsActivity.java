@@ -25,6 +25,7 @@ public class CarDetailsActivity extends AppCompatActivity {
         String carStamp = intent.getStringExtra("carStamp");
         String carYear = intent.getStringExtra("carYear");
         String carBody = intent.getStringExtra("carBody");
+        String carTransmisson = intent.getStringExtra("carTransmisson");
 
         // Находим TextView по id
         TextView carNameTextView = findViewById(R.id.carNameTextView);
@@ -33,6 +34,7 @@ public class CarDetailsActivity extends AppCompatActivity {
         TextView carDriveTextView = findViewById(R.id.carDriveTextView);
         TextView carYearTextView = findViewById(R.id.carYearTextView);
         TextView carBodyTextView = findViewById(R.id.carBodyTextView);
+        TextView carTransmissonTextView = findViewById(R.id.carTransmissionTextView);
         ImageView Photo = findViewById(R.id.imageView9);
         Glide.with(getApplicationContext()).load(carPhoto).into(Photo);
 
@@ -43,6 +45,7 @@ public class CarDetailsActivity extends AppCompatActivity {
         carDriveTextView.setText("Привод: " + carDrive);
         carYearTextView.setText("Год выпуска: " + carYear);
         carBodyTextView.setText("Тип кузова: " + carBody);
+        carTransmissonTextView.setText("Коробка передач: " + carTransmisson);
 
     }
     public void onClickBack(View view) {

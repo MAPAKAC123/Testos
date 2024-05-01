@@ -71,6 +71,7 @@ public class MainScreen extends AppCompatActivity {
                 intent.putExtra("carDrive", car.getDrive());
                 intent.putExtra("carYear", car.getYear());
                 intent.putExtra("carBody", car.getBody());
+                intent.putExtra("carTransmisson", car.getTransmission());
                 startActivity(intent);
             }
         });

@@ -53,13 +53,14 @@ public class Registration extends AppCompatActivity {
         String login = edLogin.getText().toString().toLowerCase();
         String password = edPassword.getText().toString().toLowerCase();
         String ppassword = edPPassword.getText().toString().toLowerCase();
+        String url = null;
         if (name.isEmpty() || familia.isEmpty() || otchestvo.isEmpty() || mail.isEmpty() || login.isEmpty() || password.isEmpty() || ppassword.isEmpty()) {
             // Одно из полей пустое
             Toast.makeText(this, "Заполните все поля", Toast.LENGTH_SHORT).show();
         } else {
             if (mail.contains("@gmail.com") || mail.contains("@mail.com") || mail.contains("@mail.ru")) {
                 if (password.length() >= 8 && password.equals(ppassword)) {
-                    User newUser = new User(id, name, familia, otchestvo, mail, login, password);
+                    User newUser = new User(id, name, familia, otchestvo, mail, login, password, url);
                     mDataBase.push().setValue(newUser);
                     startActivity(new Intent(this, MainScreen.class));
                     Toast.makeText(this, "Вы успешно прошли регистрацию", Toast.LENGTH_SHORT).show();

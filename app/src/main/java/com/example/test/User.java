@@ -1,12 +1,12 @@
 package com.example.test;
 
 public class User {
-    private String id, name, familia, otchestvo, mail, login, password;
+    private String id, name, familia, otchestvo, mail, login, password, avatarUrl;
     public User() {
         // Пустой конструктор по умолчанию, необходимый для Firebase
     }
 
-    public User(String id, String name, String familia, String otchestvo, String mail, String login, String password) {
+    public User(String id, String name, String familia, String otchestvo, String mail, String login, String password, String avatarUrl) {
         this.id = id;
         this.name = name;
         this.familia = familia;
@@ -14,61 +14,32 @@ public class User {
         this.mail = mail;
         this.login = login;
         this.password = password;
+        this.avatarUrl = avatarUrl;
     }
 
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    public String getAvatarUrl(){ return avatarUrl;}
     public String getFamilia() {
         return familia;
     }
-
-    public void setFamilia(String familia) {
-        this.familia = familia;
-    }
-
     public String getOtchestvo() {
         return otchestvo;
     }
-
-    public void setOtchestvo(String otchestvo) {
-        this.otchestvo = otchestvo;
-    }
-
     public String getMail() {
         return mail;
     }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
     public String getLogin() {
         return login;
     }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }
