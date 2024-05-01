@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 public class PasswordRecovery extends AppCompatActivity {
     private EditText emailEditText;
     private ImageButton sendSmsButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,22 +24,22 @@ public class PasswordRecovery extends AppCompatActivity {
 
         init();
     }
-    public void init()
-    {
+
+    public void init() {
         emailEditText = findViewById(R.id.editTextText);
     }
-    public void onClickBack(View view) { startActivity(new Intent(this, LoginAccount.class));}
-    public void onClickVost(View view)
-    {
-        String email = emailEditText.getText().toString();
-        Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
-        smsIntent.setData(Uri.parse("smsto:" + email));
-        smsIntent.putExtra("sms_body", "Привет! Отправлено через SMS");
 
-        if (ContextCompat.checkSelfPermission(PasswordRecovery.this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
-            startActivity(smsIntent);
-        } else {
-            ActivityCompat.requestPermissions(PasswordRecovery.this, new String[]{Manifest.permission.SEND_SMS}, 1);
-        }
+    public void onClickBack(View view) {
+        startActivity(new Intent(this, LoginAccount.class));
+    }
+
+    public void onClickVost(View view) {
+        String email = emailEditText.getText().toString();
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.setType("text/plain");
+        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Восстановление пароля");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Привет! Отправлено через систему сообщений");
+
+        startActivity(Intent.createChooser(sendIntent, "Отправить через"));
     }
 }

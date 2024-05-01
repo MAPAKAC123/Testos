@@ -16,10 +16,15 @@ import java.util.List;
 public class CarAdapter extends BaseAdapter {
     private Context context;
     private List<Car> cars;
+    private OnCarClickListener onCarClickListener;
 
     public CarAdapter(Context context, List<Car> cars) {
         this.context = context;
         this.cars = cars;
+    }
+
+    public void setOnCarClickListener(OnCarClickListener listener) {
+        this.onCarClickListener = listener;
     }
 
     @Override
@@ -51,21 +56,36 @@ public class CarAdapter extends BaseAdapter {
         TextView carPriceTextView = view.findViewById(R.id.carPriceTextView);
         ImageView photoCar = view.findViewById(R.id.imageView6);
 
-// Получите информацию о машине для текущей позиции
+        // Получите информацию о машине для текущей позиции
         Car car = cars.get(position);
 
-// Установите информацию о машине в элементы макета
+        // Установите информацию о машине в элементы макета
         carNameTextView.setText(car.getStamp());
         carModelTextView.setText(car.getModel());
         carPriceTextView.setText(car.getPrice());
 
-// Загрузите изображение машины с помощью Glide и установите его в ImageView
+        // Загрузите изображение машины с помощью Glide и установите его в ImageView
         Glide.with(context).load(car.getPhoto()).into(photoCar);
+
+        // Добавьте обработчик нажатий на ImageView
+        photoCar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onCarClickListener != null) {
+                    onCarClickListener.onCarClick(car);
+                }
+            }
+        });
 
         return view;
     }
+
     public void updateCars(List<Car> cars) {
         this.cars = cars;
         notifyDataSetChanged();
+    }
+
+    public interface OnCarClickListener {
+        void onCarClick(Car car);
     }
 }

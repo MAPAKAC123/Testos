@@ -48,8 +48,8 @@ public class LoginAccount extends AppCompatActivity {
 
     public void onClickLogin(View view)
     {
-        String login = editTextText.getText().toString();
-        String password = editTextTextPassword3.getText().toString();
+        String login = editTextText.getText().toString().toLowerCase();
+        String password = editTextTextPassword3.getText().toString().toLowerCase();
         mDataBase = FirebaseDatabase.getInstance().getReference("User");
         Query query = mDataBase.orderByChild("login").equalTo(login);
         query.addListenerForSingleValueEvent(new ValueEventListener() {

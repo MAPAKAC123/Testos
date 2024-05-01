@@ -70,7 +70,7 @@ public class Profile extends AppCompatActivity {
                     // Изображение успешно загружено на Firebase Storage
                     imagesRef.getDownloadUrl().addOnSuccessListener(uri -> {
                         String imageUrl = uri.toString();
-                        Toast.makeText(Profile.this, imageUrl, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(Profile.this, imageUrl, Toast.LENGTH_SHORT).show();
                         saveImageUrlToDatabase(imageUrl);
                     });
                 })
@@ -95,7 +95,7 @@ public class Profile extends AppCompatActivity {
                     });
         } else {
             // Обработайте случай, когда FirebaseUser равен null
-            Toast.makeText(Profile.this, "Пользователь не найден для сохранения фото профиля", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(Profile.this, "Пользователь не найден для сохранения фото профиля", Toast.LENGTH_SHORT).show();
         }
     }
 }

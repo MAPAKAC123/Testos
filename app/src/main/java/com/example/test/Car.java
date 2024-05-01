@@ -1,6 +1,8 @@
 package com.example.test;
 
-public class Car {
+import java.io.Serializable;
+
+public class Car implements Serializable {
     private String id, body, drive, transmission, year, price, stamp, model, generation, photo;
 
     public Car() {
@@ -18,7 +20,6 @@ public class Car {
         this.model = model;
         this.generation = generation;
     }
-
     public String getId() {
         return id;
     }
