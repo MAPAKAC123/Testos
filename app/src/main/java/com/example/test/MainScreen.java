@@ -28,7 +28,7 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_main_screen);
         FirebaseApp.initializeApp(this);
 
-        gridView = findViewById(R.id.Grid); // Предполагается, что у вас есть GridView в макете activity_main_screen.xml
+        gridView = findViewById(R.id.Grid);
 
         // Создаём начальный список автомобилей, который будет отображаться до загрузки данных из Firebase
         List<Car> carsList = new ArrayList<>();

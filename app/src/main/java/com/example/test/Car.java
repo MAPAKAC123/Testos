@@ -1,14 +1,14 @@
 package com.example.test;
 
 public class Car {
-    private String id, body, drive, transmission, year, price, stamp, model, generation;
+    private String id, body, drive, transmission, year, price, stamp, model, generation, photo;
 
     public Car() {
-        // Обязательный пустой конструктор для использования Firebase
     }
 
-    public Car(String id, String body, String drive, String transmission, String year, String price, String stamp, String model, String generation) {
+    public Car(String id, String photo, String body, String drive, String transmission, String year, String price, String stamp, String model, String generation) {
         this.id = id;
+        this.photo = photo;
         this.body = body;
         this.drive = drive;
         this.transmission = transmission;
@@ -50,6 +50,7 @@ public class Car {
     public String getModel() {
         return model;
     }
+    public String getPhoto(){ return photo;}
 
     public String getGeneration() {
         return generation;

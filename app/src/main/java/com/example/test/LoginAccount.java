@@ -52,9 +52,6 @@ public class LoginAccount extends AppCompatActivity {
         String password = editTextTextPassword3.getText().toString();
         mDataBase = FirebaseDatabase.getInstance().getReference("User");
         Query query = mDataBase.orderByChild("login").equalTo(login);
-        Query query1 = mDataBase.orderByChild("avatarUrl");
-        Toast.makeText(LoginAccount.this,query1, T)
-
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
