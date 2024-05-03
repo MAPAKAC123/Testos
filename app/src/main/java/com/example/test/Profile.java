@@ -84,6 +84,7 @@ public class Profile extends AppCompatActivity {
         startActivity(new Intent(this, MainScreen.class));
     }
     public void onClickFavor(View view) { startActivity(new Intent(this, Favourites.class)); }
+    public void onClickNewCar(View view) { startActivity(new Intent(this, NewCar.class)); }
     public void onClickPhoto(View view) {
         Intent pickImageIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(pickImageIntent, PICK_IMAGE_REQUEST_CODE);
