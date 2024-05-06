@@ -107,5 +107,55 @@ public class Profile extends AppCompatActivity {
         Intent pickImageIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(pickImageIntent, PICK_IMAGE_REQUEST_CODE);
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            if (data != null) {
+                selectedImageUri = data.getData();
+                avatarImageView.setImageURI(selectedImageUri);
+                avatarImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                avatarImageView.setAdjustViewBounds(true);
 
+                uploadImageToFirebaseStorage();
+            }
+        }
+    }
+
+    private void uploadImageToFirebaseStorage() {
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+        StorageReference imagesRef = storageRef.child("images/" + selectedImageUri.getLastPathSegment());
+        imagesRef.putFile(selectedImageUri)
+                .addOnSuccessListener(taskSnapshot -> {
+                    // Изображение успешно загружено на Firebase Storage
+                    imagesRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                        String imageUrl = uri.toString();
+                        // Toast.makeText(Profile.this, imageUrl, Toast.LENGTH_SHORT).show();
+                        saveImageUrlToDatabase(imageUrl);
+                    });
+                })
+                .addOnFailureListener(e -> {
+                    // Обработка ошибок при загрузке изображения
+                });
+
+    }
+
+    private void saveImageUrlToDatabase(String imageUrl) {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            String userId = firebaseUser.getUid();
+            Toast.makeText(Profile.this, userId, Toast.LENGTH_SHORT).show();
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("User").child(userId);
+            userRef.child("avatarUrl").setValue(imageUrl)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(Profile.this, "Image URL saved to database", Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(Profile.this, "Failed to save image URL to database", Toast.LENGTH_SHORT).show();
+                    });
+        } else {
+            // Обработайте случай, когда FirebaseUser равен null
+            //  Toast.makeText(Profile.this, "Пользователь не найден для сохранения фото профиля", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
