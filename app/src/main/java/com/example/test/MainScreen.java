@@ -76,6 +76,7 @@ public class MainScreen extends AppCompatActivity {
             }
         });
     }
+    
 
     public void onClickProfile(View view) {
         startActivity(new Intent(this, Profile.class));
