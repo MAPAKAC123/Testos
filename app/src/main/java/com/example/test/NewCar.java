@@ -15,11 +15,33 @@ public class NewCar extends AppCompatActivity {
     private EditText edMarka, edModel, edPokolenie, edTipKyzova, edPrivod, edGod, edKorobka, edPrice;
     private DatabaseReference mDataBase;
     private String USER_KEY = "Car";
+    private String userName = "";
+    private String userFamilia = "";
+    private String userOtchestvo = "";
+    private String userMail = "";
+    private String userUrl = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_car);
+
+        if (savedInstanceState != null) {
+            userName = savedInstanceState.getString("userName");
+            userFamilia = savedInstanceState.getString("userFamilia");
+            userOtchestvo = savedInstanceState.getString("userOtchestvo");
+            userMail = savedInstanceState.getString("userMail");
+            userUrl = savedInstanceState.getString("userUrl");
+        } else {
+            // Получение данных из Intent (если активность создается впервые)
+            Intent intent = getIntent();
+            userName = intent.getStringExtra("userName");
+            userFamilia = intent.getStringExtra("userFamilia");
+            userOtchestvo = intent.getStringExtra("userOtchestvo");
+            userMail = intent.getStringExtra("userMail");
+            userUrl = intent.getStringExtra("userUrl");
+        }
+
         init();
     }
     private void init() {
@@ -34,7 +56,13 @@ public class NewCar extends AppCompatActivity {
         mDataBase = FirebaseDatabase.getInstance().getReference(USER_KEY);
     }
     public void onClickBack(View view) {
-        startActivity(new Intent(this, Profile.class));
+        Intent intent = new Intent(this, Profile.class);
+        intent.putExtra("userName", userName);
+        intent.putExtra("userFamilia", userFamilia);
+        intent.putExtra("userOtchestvo", userOtchestvo);
+        intent.putExtra("userMail", userMail);
+        intent.putExtra("userUrl", userUrl);
+        startActivity(intent);
     }
     public void onClickSave(View view) {
         String id = mDataBase.getKey();
@@ -55,8 +83,15 @@ public class NewCar extends AppCompatActivity {
         {
             Car newCar = new Car(id, url, tip_kyzova, privod, korobka, god, price, marka, model, pokolenie);
             mDataBase.push().setValue(newCar);
-            startActivity(new Intent(this, Profile.class));
             Toast.makeText(this, "Объявление успешно добавлено", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, Profile.class);
+            intent.putExtra("userName", userName);
+            intent.putExtra("userFamilia", userFamilia);
+            intent.putExtra("userOtchestvo", userOtchestvo);
+            intent.putExtra("userMail", userMail);
+            intent.putExtra("userUrl", userUrl);
+            startActivity(intent);
         }
     }
 }

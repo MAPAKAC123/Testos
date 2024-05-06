@@ -22,11 +22,31 @@ public class MainScreen extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private GridView gridView;
     private CarAdapter carAdapter;
-
+    private String userName = "";
+    private String userFamilia = "";
+    private String userOtchestvo = "";
+    private String userMail = "";
+    private String userUrl = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
+
+        if (savedInstanceState != null) {
+            userName = savedInstanceState.getString("userName");
+            userFamilia = savedInstanceState.getString("userFamilia");
+            userOtchestvo = savedInstanceState.getString("userOtchestvo");
+            userMail = savedInstanceState.getString("userMail");
+            userUrl = savedInstanceState.getString("userUrl");
+        } else {
+            // Получение данных из Intent (если активность создается впервые)
+            Intent intent = getIntent();
+            userName = intent.getStringExtra("userName");
+            userFamilia = intent.getStringExtra("userFamilia");
+            userOtchestvo = intent.getStringExtra("userOtchestvo");
+            userMail = intent.getStringExtra("userMail");
+            userUrl = intent.getStringExtra("userUrl");
+        }
 
         FirebaseApp.initializeApp(this);
         gridView = findViewById(R.id.Grid);
@@ -76,13 +96,24 @@ public class MainScreen extends AppCompatActivity {
             }
         });
     }
-    
+
 
     public void onClickProfile(View view) {
-        startActivity(new Intent(this, Profile.class));
+        Intent intent = new Intent(this, Profile.class);
+        intent.putExtra("userName", userName);
+        intent.putExtra("userFamilia", userFamilia);
+        intent.putExtra("userOtchestvo", userOtchestvo);
+        intent.putExtra("userMail", userMail);
+        intent.putExtra("userUrl", userUrl);
+        startActivity(intent);
     }
-
     public void onClickFavor(View view) {
-        startActivity(new Intent(this, Favourites.class));
+        Intent intent = new Intent(this, Favourites.class);
+        intent.putExtra("userName", userName);
+        intent.putExtra("userFamilia", userFamilia);
+        intent.putExtra("userOtchestvo", userOtchestvo);
+        intent.putExtra("userMail", userMail);
+        intent.putExtra("userUrl", userUrl);
+        startActivity(intent);
     }
 }

@@ -62,7 +62,13 @@ public class Registration extends AppCompatActivity {
                 if (password.length() >= 8 && password.equals(ppassword)) {
                     User newUser = new User(id, name, familia, otchestvo, mail, login, password, url);
                     mDataBase.push().setValue(newUser);
-                    startActivity(new Intent(this, MainScreen.class));
+                    Intent intent = new Intent(Registration.this, Profile.class);
+                    intent.putExtra("userName", name);
+                    intent.putExtra("userFamilia", familia);
+                    intent.putExtra("userOtchestvo", otchestvo);
+                    intent.putExtra("userMail", mail);
+                    intent.putExtra("userUrl", url);
+                    startActivity(intent);
                     Toast.makeText(this, "Вы успешно прошли регистрацию", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, "Пароль должен содержать 8 символов или больше. Также пароль нужно подтвердить", Toast.LENGTH_SHORT).show();
